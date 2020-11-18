@@ -9,7 +9,7 @@ import Pagination from "../components/commun/Pagination";
 import paginationFunc from "../functions/paginationFunc";
 import pageClickFunc from "../functions/pageClickFunc";
 
-const Home = () => {
+const Characters = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [characters, setCharacters] = useState({});
   const [pages, setPages] = useState([]);
@@ -26,7 +26,6 @@ const Home = () => {
           limit,
           skip,
         });
-        // console.log(response.data.data.results);
 
         if (response.data.code === 200) {
           setCharacters(response.data.data.results);
@@ -44,9 +43,9 @@ const Home = () => {
   }, [p]);
 
   return (
-    <main className="Home">
+    <main className="Characters">
       <div className="wrapper">
-        <div className="Home-wrapper">
+        <div className="Characters-wrapper">
           {isLoading ? (
             "Chargement en cours"
           ) : (
@@ -66,4 +65,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Characters;

@@ -76,15 +76,14 @@ body {
   box-sizing: border-box;
 }
 
-/* Home */
-.Home {
+/* Characters */
+.Characters {
   margin-top: 60px;
 }
-.Home-wrapper {
+.Characters-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: aqua; */
 }
 
 /* Comics */
@@ -95,7 +94,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: aqua; */
 }
 
 /* ItemList */
@@ -117,14 +115,17 @@ body {
   height: 350px;
 }
 .Item-image {
-  background-color: seagreen;
   width: 100%;
   height: 300px;
+  object-fit: cover;
 }
 .Item-name {
-  background-color: sienna;
+  background-color: #000;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
 }

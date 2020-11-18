@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Home from "./containers/Home";
+import Characters from "./containers/Characters";
 import Comics from "./containers/Comics";
 import Header from "./components/commun/Header";
 import Footer from "./components/commun/Footer";
@@ -15,12 +15,12 @@ const App = () => {
         <Header />
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Characters />
           </Route>
           <Route path="/characters/:p">
-            <Home />
+            <Characters />
           </Route>
-          <Route path="/comics">
+          <Route path="/comics/:p">
             <Comics />
           </Route>
         </Switch>
