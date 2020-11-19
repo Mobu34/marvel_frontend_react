@@ -20,11 +20,13 @@ const Header = () => {
             <Link to="/comics/page_1" className="Header-nav-link link">
               COMICS
             </Link>
-            <Link to="/favorites" className="Header-nav-link link">
-              MY FAVS
+            <Link to="/tournament" className="Header-nav-link link">
+              TOURNAMENT
             </Link>
           </div>
-          <button className="Header-login-btn">LOGIN</button>
+          <button className="Header-tournamentrules-btn">
+            TOURNAMENT RULES
+          </button>
         </div>
         <div className="Header-input-container">
           <input

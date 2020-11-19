@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Characters from "./containers/Characters";
 import Comics from "./containers/Comics";
+import Tournament from "./containers/Tournament";
 import Header from "./components/commun/Header";
 import Footer from "./components/commun/Footer";
 
@@ -22,6 +23,9 @@ const App = () => {
           </Route>
           <Route path="/comics/:p">
             <Comics />
+          </Route>
+          <Route path="/tournament">
+            <Tournament />
           </Route>
         </Switch>
         <Footer />

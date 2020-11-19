@@ -46,11 +46,11 @@ body {
   font-size: 22px;
   font-weight: 700;
 }
-.Header-login-btn {
+.Header-tournamentrules-btn {
   background-color: #f11d22;
   border: none;
   height: 35px;
-  width: 70px;
+  width: 100px;
   color: #fff;
   font-size: 12px;
   font-weight: 600;
@@ -91,6 +91,16 @@ body {
   margin-top: 60px;
 }
 .Comics-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Tournament */
+.Tournament {
+  margin-top: 60px;
+}
+.Tournament-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
