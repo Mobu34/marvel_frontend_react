@@ -1,7 +1,13 @@
 import React from "react";
 
-const Favorites = () => {
-  return <main className="Favorites"></main>;
+const Favorites = ({ favorites }) => {
+  return (
+    <main className="Favorites">
+      {favorites.map((favorite, index) => {
+        console.log(favorite);
+      })}
+    </main>
+  );
 };
 
 export default Favorites;

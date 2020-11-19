@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-const Item = ({ item, dispatch }) => {
+const Item = ({ item, dispatch, manageFavorites }) => {
   const history = useHistory();
 
   const [inFight, setInFight] = useState(false);
+  const [favorite, setFavorite] = useState(false);
 
   const handleLinkClick = () => {
     if (item.name) {
@@ -28,6 +29,12 @@ const Item = ({ item, dispatch }) => {
     }
   };
 
+  const handleFavoriteClick = (e) => {
+    e.stopPropagation();
+    manageFavorites(item);
+    setFavorite(!favorite);
+  };
+
   return (
     <div className="Item" onClick={handleLinkClick}>
       {item.name && (
@@ -36,6 +43,10 @@ const Item = ({ item, dispatch }) => {
           onClick={handleParticipateClick}
         ></div>
       )}
+      <div
+        className={favorite ? "Item-favorite" : "Item-not-favorite"}
+        onClick={handleFavoriteClick}
+      ></div>
       <img
         src={item.thumbnail.path + "." + item.thumbnail.extension}
         alt={item.name || item.title}

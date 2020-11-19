@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import marvelLogo from "/Users/Lucas/LeReacteur/React/Marvel/marvel_frontend_react/src/assets/images/marvel-logo.png";
 
 const Header = () => {
+  const [isRulesDisplayed, setIsRulesDisplayed] = useState(false);
+
   return (
     <>
       <header className="Header">
@@ -27,7 +29,10 @@ const Header = () => {
               TOURNAMENT
             </Link>
           </div>
-          <button className="Header-tournamentrules-btn">
+          <button
+            className="Header-tournamentrules-btn"
+            onClick={() => setIsRulesDisplayed(!isRulesDisplayed)}
+          >
             TOURNAMENT RULES
           </button>
         </div>
@@ -39,6 +44,18 @@ const Header = () => {
             className="Header-input"
             placeholder="LOOKING FOR SOMETHING?"
           />
+        </div>
+        <div
+          className={
+            isRulesDisplayed
+              ? "Header-tournamentrules-container"
+              : "Header-tournamentrules-container-hidden"
+          }
+        >
+          <h2>
+            You can trigger a fight between 2 Marvel characters, select your
+            fighters with the top-left button on their picture and let's FIGHT
+          </h2>
         </div>
       </header>
     </>

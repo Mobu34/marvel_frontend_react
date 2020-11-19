@@ -9,7 +9,7 @@ import Pagination from "../components/commun/Pagination";
 import paginationFunc from "../functions/paginationFunc";
 import pageClickFunc from "../functions/pageClickFunc";
 
-const Characters = () => {
+const Characters = ({ manageFavorites }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [characters, setCharacters] = useState({});
   const [pages, setPages] = useState([]);
@@ -51,7 +51,7 @@ const Characters = () => {
           ) : (
             <>
               <Title title="DISCOVER OUR CHARACTERS" />
-              <ItemList data={characters} />
+              <ItemList data={characters} manageFavorites={manageFavorites} />
               <Pagination
                 pages={pages}
                 to="/characters/page_"
