@@ -20,6 +20,9 @@ const Header = () => {
             <Link to="/comics/page_1" className="Header-nav-link link">
               COMICS
             </Link>
+            <Link to="/favorites" className="Header-nav-link link">
+              FAVS
+            </Link>
             <Link to="/tournament" className="Header-nav-link link">
               TOURNAMENT
             </Link>

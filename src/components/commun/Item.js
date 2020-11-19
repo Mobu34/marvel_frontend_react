@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import setupFight from "../../reducers/fightReducer";
+import { useHistory } from "react-router-dom";
 
 const Item = ({ item, dispatch }) => {
+  const history = useHistory();
+
   const [inFight, setInFight] = useState(false);
 
-  const handleClick = () => {
+  const handleLinkClick = () => {
+    if (item.name) {
+      history.push(`/character/${item.id}`);
+    } else {
+      history.push(`/comic/${item.id}`);
+    }
+  };
+
+  const handleParticipateClick = (e) => {
+    e.stopPropagation();
     if (inFight === false) {
       const action = { type: "ADD_PARTICIPANT", value: item };
       dispatch(action);
@@ -18,7 +29,13 @@ const Item = ({ item, dispatch }) => {
   };
 
   return (
-    <div className="Item" onClick={item.name && handleClick}>
+    <div className="Item" onClick={handleLinkClick}>
+      {item.name && (
+        <div
+          className="Item-participate"
+          onClick={handleParticipateClick}
+        ></div>
+      )}
       <img
         src={item.thumbnail.path + "." + item.thumbnail.extension}
         alt={item.name || item.title}

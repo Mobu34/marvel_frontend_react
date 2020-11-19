@@ -1,5 +1,4 @@
 const paginationFunc = (total, setPages) => {
-  console.log(setPages);
   const newPages = [];
   let i = 0,
     j = 1;

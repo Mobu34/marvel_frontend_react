@@ -153,6 +153,16 @@ body {
   margin: 30px 0;
 }
 
+/* Character */
+.Character {
+  margin-top: 60px;
+}
+
+/* Comic */
+.Comic {
+  margin-top: 60px;
+}
+
 /* ItemList */
 .ItemList {
   background-color: rgba(0, 0, 0, 0.7);
@@ -170,6 +180,16 @@ body {
   width: 250px;
   margin: 15px;
   height: 350px;
+  position: relative;
+}
+.Item-participate {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  top: 20px;
+  left: 20px;
+  background-color: #f11d22;
 }
 .Item-image {
   width: 100%;
@@ -185,4 +205,90 @@ body {
   color: #fff;
   padding: 10px;
   box-sizing: border-box;
+}
+
+/* ItemDetails */
+.ItemDetails {
+  margin-top: 100px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 50px;
+  border-radius: 20px;
+  display: flex;
+}
+
+.ItemDetails-image {
+  height: 500px;
+  object-fit: cover;
+  margin-right: 60px;
+}
+.ItemDetails-details-container {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* background-color: khaki; */
+  width: 100%;
+}
+.ItemDetails-title {
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+.ItemDetails-linkeditems-container {
+  /* background-color: royalblue; */
+  width: 640px;
+  /* flex: 1; */
+}
+.ItemDetails-linkeditems-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.ItemDetails-linkeditems-image {
+  display: flex;
+  overflow-y: scroll;
+  /* background-color: rosybrown; */
+  /* width: auto; */
+  /* scrollbar-arrow-color: seagreen; */
+}
+.ItemDetails-linkeditems-image .LinkedItem {
+  margin: 0 10px;
+}
+.ItemDetails-linkeditems-image .LinkedItem:first-child {
+  margin-left: 0;
+}
+.ItemDetails-linkeditems-image .LinkedItem:last-child {
+  margin-right: 0;
+}
+
+.LinkedItem {
+  background-color: rgba(0, 0, 0, 0.95);
+  /* margin: 0 5px; */
+}
+.LinkedItem-image {
+  width: 120px;
+  height: 140px;
+  object-fit: cover;
+  /* margin: 0 50px; */
+  /* flex */
+  /* margin: 0 5px; */
+  flex-shrink: 1;
+}
+.LinkedItem-title {
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Pagination */
+.Pagination {
+  background-color: sienna;
+  width: 600px;
+  margin: 30px 0;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
 }
