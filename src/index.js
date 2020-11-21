@@ -8,7 +8,8 @@ import storage from "redux-persist/lib/storage";
 
 import "./index.css";
 import App from "./App";
-import favoriteReducer from "./reducers/favoriteReducer";
+import favoriteCharactersReducer from "./reducers/favoriteCharactersReducer";
+import favoriteComicsReducer from "./reducers/favoriteComicsReducers";
 import fightReducer from "./reducers/fightReducer";
 
 const persistConfig = {
@@ -17,7 +18,8 @@ const persistConfig = {
 };
 
 const reducers = combineReducers({
-  favorites: favoriteReducer,
+  favoriteCharacters: favoriteCharactersReducer,
+  favoriteComics: favoriteComicsReducer,
   fight: fightReducer,
 });
 

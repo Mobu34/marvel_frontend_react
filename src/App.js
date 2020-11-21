@@ -17,37 +17,22 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 library.add(faStar);
 
 const App = () => {
-  const [favorites, setFavorites] = useState([]);
-
-  const manageFavorites = (item) => {
-    const newFavorites = [...favorites];
-
-    if (favorites.indexOf(item) !== -1) {
-      newFavorites.splice(favorites.indexOf(item), 1);
-    } else {
-      newFavorites.push(item);
-    }
-    setFavorites(newFavorites);
-  };
-
-  console.log(favorites);
-
   return (
     <div className="App">
       <Router>
         <Header />
         <Switch>
           <Route exact path="/">
-            <Characters manageFavorites={manageFavorites} />
+            <Characters />
           </Route>
           <Route path="/characters/:p">
-            <Characters manageFavorites={manageFavorites} />
+            <Characters />
           </Route>
           <Route path="/comics/:p">
             <Comics />
           </Route>
           <Route path="/favorites">
-            <Favorites favorites={favorites} />
+            <Favorites />
           </Route>
           <Route path="/tournament">
             <Tournament />

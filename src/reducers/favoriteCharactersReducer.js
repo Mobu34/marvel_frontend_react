@@ -1,9 +1,9 @@
 const initialState = { favorites: [] };
 
-const manageFavorites = (state = initialState, action) => {
+const manageFavoriteCharacters = (state = initialState, action) => {
   let nextState;
   switch (action.type) {
-    case "TOGGLE_FAVORITE":
+    case "TOGGLE_FAVORITE_CHARACTERS":
       if (state.favorites.length === 0) {
         // premier favoris
         nextState = {
@@ -38,4 +38,4 @@ const manageFavorites = (state = initialState, action) => {
   }
 };
 
-export default manageFavorites;
+export default manageFavoriteCharacters;

@@ -4,13 +4,13 @@ import { connect } from "react-redux";
 import Title from "../components/commun/Title";
 import Item from "../components/commun/Item";
 
-const Favorites = ({ favorites }) => {
+const Favorites = ({ favoriteCharacters, favoriteComics }) => {
   console.log("Favorites");
   return (
     <main className="Favorites">
       <div className="wrapper">
         <div className="Favorites-wrapper">
-          {favorites.length === 0 ? (
+          {favoriteCharacters.length === 0 ? (
             "Please add characters in favorites"
           ) : (
             <>
@@ -18,12 +18,25 @@ const Favorites = ({ favorites }) => {
               <div className="Favorites-item-container">
                 <h2 className="Favorites-item-title">MY CHARACTERS</h2>
                 <div className="Favorites-item-subcontainer">
-                  {favorites.map((favorite, index) => {
+                  {favoriteCharacters.map((favorite, index) => {
                     return <Item key={index} item={favorite} />;
                   })}
                 </div>
               </div>
             </>
+          )}
+          {favoriteComics.length === 0 ? (
+            "Please add some comics in favorites"
+          ) : (
+            <div className="Favorites-item-container">
+              <h2 className="Favorites-item-title">MY COMICS</h2>
+              <div className="Favorites-item-subcontainer">
+                {favoriteComics.map((favorite, index) => {
+                  console.log(favorite);
+                  return <Item key={index} item={favorite} />;
+                })}
+              </div>
+            </div>
           )}
         </div>
       </div>
@@ -32,9 +45,9 @@ const Favorites = ({ favorites }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
-    favorites: state.favorites.favorites,
+    favoriteCharacters: state.favoriteCharacters.favorites,
+    favoriteComics: state.favoriteComics.favorites,
   };
 };
 

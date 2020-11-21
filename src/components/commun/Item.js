@@ -4,15 +4,20 @@ import { useHistory } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Item = ({ item, dispatch, favorites }) => {
-  console.log(favorites);
+const Item = ({ item, dispatch, favoriteCharacters, favoriteComics }) => {
   const history = useHistory();
+  console.log(favoriteComics);
 
   const [inFight, setInFight] = useState(false);
 
   item.isFavorite = false;
-  for (let i = 0; i < favorites.length; i++) {
-    if (favorites[i].id === item.id) {
+  for (let i = 0; i < favoriteCharacters.length; i++) {
+    if (favoriteCharacters[i].id === item.id) {
+      item.isFavorite = true;
+    }
+  }
+  for (let i = 0; i < favoriteComics.length; i++) {
+    if (favoriteComics[i].id === item.id) {
       item.isFavorite = true;
     }
   }
@@ -41,8 +46,13 @@ const Item = ({ item, dispatch, favorites }) => {
 
   const handleFavoriteClick = (e) => {
     e.stopPropagation();
-    // item.isFavorite = item.isFavorite ? false : true;
-    const action = { type: "TOGGLE_FAVORITE", value: item };
+    let action;
+    if (item.name) {
+      action = { type: "TOGGLE_FAVORITE_CHARACTERS", value: item };
+    } else {
+      action = { type: "TOGGLE_FAVORITE_COMICS", value: item };
+    }
+
     dispatch(action);
   };
 
@@ -86,7 +96,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    favorites: state.favorites.favorites,
+    favoriteCharacters: state.favoriteCharacters.favorites,
+    favoriteComics: state.favoriteComics.favorites,
   };
 };
 

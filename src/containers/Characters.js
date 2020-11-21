@@ -9,7 +9,7 @@ import Pagination from "../components/commun/Pagination";
 import paginationFunc from "../functions/paginationFunc";
 import pageClickFunc from "../functions/pageClickFunc";
 
-const Characters = ({ manageFavorites }) => {
+const Characters = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [characters, setCharacters] = useState({});
   const [pages, setPages] = useState([]);
@@ -21,6 +21,7 @@ const Characters = ({ manageFavorites }) => {
     const skip = (pageClickFunc(p) - 1) * 100;
 
     const fetchData = async () => {
+      console.log("fetcg");
       try {
         const response = await axios.post("http://localhost:3001/characters", {
           limit,
@@ -32,6 +33,7 @@ const Characters = ({ manageFavorites }) => {
 
           paginationFunc(response.data.data.total, setPages);
 
+          console.log(response.data.code);
           setIsLoading(false);
         }
       } catch (error) {
@@ -51,7 +53,7 @@ const Characters = ({ manageFavorites }) => {
           ) : (
             <>
               <Title title="DISCOVER OUR CHARACTERS" />
-              <ItemList data={characters} manageFavorites={manageFavorites} />
+              <ItemList data={characters} />
               <Pagination
                 pages={pages}
                 to="/characters/page_"

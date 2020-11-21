@@ -52,10 +52,13 @@ const Header = () => {
               : "Header-tournamentrules-container-hidden"
           }
         >
-          <h2>
-            You can trigger a fight between 2 Marvel characters, select your
-            fighters with the top-left button on their picture and let's FIGHT
-          </h2>
+          <p>
+            Vous pouvez déclencher un combat entre les personnages de l'univers
+            Marvel, il vous suffit de sélectionner 2 à 8 personnages et de vous
+            rendre dans l'onglet TOURNAMENT.
+            <br />
+            ENJOY ! :)
+          </p>
         </div>
       </header>
     </>
