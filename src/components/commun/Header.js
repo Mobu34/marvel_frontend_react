@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import marvelLogo from "/Users/Lucas/LeReacteur/React/Marvel/marvel_frontend_react/src/assets/images/marvel-logo.png";
 
-const Header = () => {
+const Header = ({ fighter1, fighter2 }) => {
   const [isRulesDisplayed, setIsRulesDisplayed] = useState(false);
+
+  const areReadyToFight = () => {
+    if (fighter1.id && fighter2.id) {
+      return (
+        <span className="Header-readytofight">{`${fighter1.name} and ${fighter2.name} are ready to fight`}</span>
+      );
+    }
+  };
 
   return (
     <>
@@ -26,15 +35,19 @@ const Header = () => {
               FAVS
             </Link>
             <Link to="/tournament" className="Header-nav-link link">
-              TOURNAMENT
+              FIGHT
             </Link>
           </div>
-          <button
-            className="Header-tournamentrules-btn"
-            onClick={() => setIsRulesDisplayed(!isRulesDisplayed)}
-          >
-            TOURNAMENT RULES
-          </button>
+          {/* <span style={{ color: "#fff" }}>READY TO FIGHT</span> */}
+          <div className="Header-readytofight-container">
+            {areReadyToFight()}
+            <button
+              className="Header-tournamentrules-btn"
+              onClick={() => setIsRulesDisplayed(!isRulesDisplayed)}
+            >
+              FIGHTING RULES
+            </button>
+          </div>
         </div>
         <div className="Header-input-container">
           <input
@@ -54,7 +67,7 @@ const Header = () => {
         >
           <p>
             Vous pouvez déclencher un combat entre les personnages de l'univers
-            Marvel, il vous suffit de sélectionner 2 à 8 personnages et de vous
+            Marvel, il vous suffit de sélectionner 2 personnages et de vous
             rendre dans l'onglet TOURNAMENT.
             <br />
             ENJOY ! :)
@@ -65,4 +78,11 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    fighter1: state.fight.fighter1,
+    fighter2: state.fight.fighter2,
+  };
+};
+
+export default connect(mapStateToProps)(Header);

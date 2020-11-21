@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { GiBoxingGlove } from "react-icons/gi";
 
-const Item = ({ item, dispatch, favoriteCharacters, favoriteComics }) => {
+const Item = ({
+  item,
+  dispatch,
+  favoriteCharacters,
+  favoriteComics,
+  fighter1,
+  fighter2,
+}) => {
   const history = useHistory();
-  console.log(favoriteComics);
 
-  const [inFight, setInFight] = useState(false);
+  console.log(fighter1);
 
   item.isFavorite = false;
   for (let i = 0; i < favoriteCharacters.length; i++) {
@@ -22,6 +29,14 @@ const Item = ({ item, dispatch, favoriteCharacters, favoriteComics }) => {
     }
   }
 
+  item.isInFight = false;
+  if (fighter1.id === item.id) {
+    item.isInFight = true;
+  }
+  if (fighter2.id === item.id) {
+    item.isInFight = true;
+  }
+
   const handleLinkClick = () => {
     if (item.name) {
       history.push(`/character/${item.id}`);
@@ -31,17 +46,20 @@ const Item = ({ item, dispatch, favoriteCharacters, favoriteComics }) => {
   };
 
   const handleParticipateClick = (e) => {
-    console.log("handleParticipateClick");
     e.stopPropagation();
-    if (inFight === false) {
-      const action = { type: "ADD_PARTICIPANT", value: item };
-      dispatch(action);
-      setInFight(true);
-    } else {
-      const action = { type: "DELETE_PARTICIPANT", value: item };
-      dispatch(action);
-      setInFight(false);
-    }
+
+    const action = { type: "TOGGLE_PARTICIPANT", value: item };
+    dispatch(action);
+
+    // if (inFight === false) {
+    //   const action = { type: "ADD_PARTICIPANT", value: item };
+    //   dispatch(action);
+    //   setInFight(true);
+    // } else {
+    //   const action = { type: "DELETE_PARTICIPANT", value: item };
+    //   dispatch(action);
+    //   setInFight(false);
+    // }
   };
 
   const handleFavoriteClick = (e) => {
@@ -60,9 +78,13 @@ const Item = ({ item, dispatch, favoriteCharacters, favoriteComics }) => {
     <div className="Item" onClick={handleLinkClick}>
       {item.name && (
         <div
-          className="Item-participate"
+          className={
+            item.isInFight ? "Item-participate" : "Item-not-participate"
+          }
           onClick={handleParticipateClick}
-        ></div>
+        >
+          <GiBoxingGlove className="Item-participate-icon" />
+        </div>
       )}
       <div
         className={item.isFavorite ? "Item-favorite" : "Item-not-favorite"}
@@ -94,10 +116,11 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     favoriteCharacters: state.favoriteCharacters.favorites,
     favoriteComics: state.favoriteComics.favorites,
+    fighter1: state.fight.fighter1,
+    fighter2: state.fight.fighter2,
   };
 };
 

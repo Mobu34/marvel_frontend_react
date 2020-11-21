@@ -30,7 +30,6 @@ body {
 .Header {
   height: 70px;
   background-color: rgba(0, 0, 0, 0.95);
-  position: relative;
 }
 .Header-wrapper {
   margin: 0 70px;
@@ -46,6 +45,26 @@ body {
   margin: 0 15px;
   font-size: 22px;
   font-weight: 700;
+}
+.Header-readytofight-container {
+  position: relative;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+.Header-readytofight {
+  animation: blinker 1.5s linear infinite;
+  position: absolute;
+  color: #fff;
+  right: 100px;
+  width: 500px;
+  font-size: 14px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .Header-tournamentrules-btn {
   background-color: #f11d22;
@@ -65,7 +84,6 @@ body {
   right: 20px;
   top: 100px;
   width: 400px;
-  /* height: 300px; */
   border-radius: 100px;
   border: solid 5px #f11d22;
   background-color: rgba(0, 0, 0);
@@ -142,8 +160,6 @@ body {
   display: flex;
   overflow-x: scroll;
   width: 100%;
-  /* flex: 1; */
-  /* flex-shrink: 1; */
 }
 
 /* Tournament */
@@ -186,7 +202,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: solid 1px #b20d0d; */
 }
 .Tournament-versus {
   margin: 0 30px;
@@ -232,14 +247,32 @@ body {
   height: 350px;
   position: relative;
 }
-.Item-participate {
+.Item-not-participate {
   position: absolute;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   top: 20px;
   left: 20px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Item-participate {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: 20px;
+  left: 20px;
   background-color: #f11d22;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Item-participate-icon {
+  /* color: green; */
 }
 .Item-not-favorite {
   position: absolute;
@@ -303,7 +336,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* background-color: khaki; */
   width: 100%;
 }
 .ItemDetails-title {
@@ -312,9 +344,7 @@ body {
   margin-top: 30px;
 }
 .ItemDetails-linkeditems-container {
-  /* background-color: royalblue; */
   width: 640px;
-  /* flex: 1; */
 }
 .ItemDetails-linkeditems-title {
   font-size: 20px;
@@ -323,9 +353,6 @@ body {
 .ItemDetails-linkeditems-image {
   display: flex;
   overflow-y: scroll;
-  /* background-color: rosybrown; */
-  /* width: auto; */
-  /* scrollbar-arrow-color: seagreen; */
 }
 .ItemDetails-linkeditems-image .LinkedItem {
   margin: 0 10px;
@@ -339,15 +366,11 @@ body {
 
 .LinkedItem {
   background-color: rgba(0, 0, 0, 0.95);
-  /* margin: 0 5px; */
 }
 .LinkedItem-image {
   width: 120px;
   height: 140px;
   object-fit: cover;
-  /* margin: 0 50px; */
-  /* flex */
-  /* margin: 0 5px; */
   flex-shrink: 1;
 }
 .LinkedItem-title {

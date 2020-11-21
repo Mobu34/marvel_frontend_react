@@ -7,19 +7,17 @@ const ItemDetails = ({ item }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [itemDetails, setItemDetails] = useState([]);
 
-  let available, cat1, cat2, title, itemTitle;
+  let available, cat1, cat2, title;
   if (item.comics) {
     available = item.comics.available;
     cat1 = "character";
     cat2 = "comics";
     title = "No comics linked to this character";
-    itemTitle = "Comic(s)";
   } else {
     available = item.characters.available;
     cat1 = "comic";
     cat2 = "characters";
     title = "No characters linked to this comic";
-    itemTitle = "Character(s)";
   }
 
   useEffect(() => {
@@ -50,6 +48,7 @@ const ItemDetails = ({ item }) => {
       <img
         className="ItemDetails-image"
         src={item.thumbnail.path + "." + item.thumbnail.extension}
+        alt={item.name}
       />
       <div className="ItemDetails-details-container">
         <h2 className="ItemDetails-title">{item.name || item.title}</h2>

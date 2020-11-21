@@ -3,20 +3,29 @@ import { connect } from "react-redux";
 
 import Title from "../components/commun/Title";
 
-const Tournament = ({ teamA, teamB }) => {
-  console.log("team A =", teamA);
+const Tournament = ({ fighter1, fighter2, dispatch }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingFight, setIsLoadingFight] = useState(false);
-  const [fightersA, setFightersA] = useState([]);
-  const [fightersB, setFightersB] = useState([]);
+  const [fightersA, setFightersA] = useState({});
+  const [fightersB, setFightersB] = useState({});
   const [winner, setWinner] = useState(false);
   const [teamWinner, setTeamWinner] = useState({});
 
+  const gif = [
+    "https://media.giphy.com/media/3o8dFrnhYXR7LvfXdm/giphy.gif",
+    "https://media.giphy.com/media/10H4by255F2UsU/giphy.gif",
+    "https://media.giphy.com/media/3o6QL2hWeeBHlcZ8qs/giphy.gif",
+    "https://media.giphy.com/media/3o7TKKxPt2DhOdqeSQ/giphy.gif",
+    "https://media.giphy.com/media/kkYbDLFmNvO4E/giphy.gif",
+    "https://media.giphy.com/media/8d1tKuxOvDIHK/giphy.gif",
+  ];
+  const random = Math.round(Math.random() * 6) - 1;
+
   useEffect(() => {
-    setFightersA(teamA);
-    setFightersB(teamB);
+    setFightersA(fighter1);
+    setFightersB(fighter2);
     setIsLoading(false);
-  }, [teamA, teamB]);
+  }, [fighter1, fighter2]);
 
   const handleClick = () => {
     const random = Math.round(Math.random() * 10);
@@ -34,7 +43,8 @@ const Tournament = ({ teamA, teamB }) => {
   };
 
   const handleCancelFightClick = () => {
-    console.log("canceled");
+    const action = { type: "CANCEL_FIGHT" };
+    dispatch(action);
   };
 
   console.log(fightersA);
@@ -45,7 +55,7 @@ const Tournament = ({ teamA, teamB }) => {
         <div className="Tournament-wrapper">
           {isLoading ? (
             "Chargement en cours"
-          ) : fightersA.length === 0 || fightersB.length === 0 ? (
+          ) : !fightersA.thumbnail || !fightersB.thumbnail ? (
             <Title title="Please select 2 fighters to start the fight" />
           ) : (
             <>
@@ -64,49 +74,51 @@ const Tournament = ({ teamA, teamB }) => {
                 </span>
                 <div className="Tournament-versus-container">
                   <div className="Tournament-teamA">
-                    {fightersA.map((fighter, index) => {
-                      return (
-                        <img
-                          className="Tournament-fighter-image"
-                          key={index}
-                          src={
-                            fighter.thumbnail.path +
-                            "." +
-                            fighter.thumbnail.extension
-                          }
-                          alt=""
-                        />
-                      );
-                    })}
+                    <img
+                      className="Tournament-fighter-image"
+                      src={
+                        fightersA.thumbnail.path +
+                        "." +
+                        fightersA.thumbnail.extension
+                      }
+                      alt=""
+                    />
                   </div>
                   <div className="Tournament-versus">VS</div>
                   <div className="Tournament-teamB">
-                    {fightersB.map((fighter, index) => {
-                      return (
-                        <img
-                          className="Tournament-fighter-image"
-                          key={index}
-                          src={
-                            fighter.thumbnail.path +
-                            "." +
-                            fighter.thumbnail.extension
-                          }
-                          alt=""
-                        />
-                      );
-                    })}
+                    {/* {fightersB.map((fighter, index) => { */}
+                    {/* return ( */}
+                    {fightersB.thumbnail && (
+                      <img
+                        className="Tournament-fighter-image"
+                        // key={index}
+                        src={
+                          fightersB.thumbnail.path +
+                          "." +
+                          fightersB.thumbnail.extension
+                        }
+                        alt=""
+                      />
+                    )}
+                    {/* ); */}
+                    {/* })} */}
                   </div>
                 </div>
                 {isLoadingFight ? (
-                  "Fight in progress..."
+                  <>
+                    <span className="Tournament-winner">
+                      Fight in progress ...{" "}
+                    </span>
+                    <img src={gif[random]} alt="" />
+                  </>
                 ) : winner ? (
                   <>
-                    <h2 className="Tournament-winner">{`Winner is ${teamWinner[0].name}`}</h2>
+                    <h2 className="Tournament-winner">{`Winner is ${teamWinner.name}`}</h2>
                     <img
                       src={
-                        teamWinner[0].thumbnail.path +
+                        teamWinner.thumbnail.path +
                         "." +
-                        teamWinner[0].thumbnail.extension
+                        teamWinner.thumbnail.extension
                       }
                       alt=""
                     />
@@ -125,9 +137,17 @@ const Tournament = ({ teamA, teamB }) => {
 
 const mapStateToProps = (state) => {
   return {
-    teamA: state.fight.teamA,
-    teamB: state.fight.teamB,
+    fighter1: state.fight.fighter1,
+    fighter2: state.fight.fighter2,
   };
 };
 
-export default connect(mapStateToProps)(Tournament);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch: (action) => {
+      dispatch(action);
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tournament);
