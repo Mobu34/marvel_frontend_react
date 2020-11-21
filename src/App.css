@@ -112,6 +112,24 @@ body {
   align-items: center;
 }
 
+/* Favorites */
+.Favorites {
+  margin-top: 60px;
+}
+.Favorites-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Favorites-item-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+}
+
 /* Tournament */
 .Tournament {
   margin-top: 60px;

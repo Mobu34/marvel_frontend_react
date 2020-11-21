@@ -1,7 +1,6 @@
 const initialState = { teamA: [], teamB: [] };
 
 const setupFight = (state = initialState, action) => {
-  console.log(action);
   let nextState;
   switch (action.type) {
     case "ADD_PARTICIPANT":

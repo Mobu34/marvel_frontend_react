@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-const Item = ({ item, dispatch, manageFavorites }) => {
+const Item = ({ item, dispatch }) => {
   const history = useHistory();
 
   const [inFight, setInFight] = useState(false);
@@ -17,6 +17,7 @@ const Item = ({ item, dispatch, manageFavorites }) => {
   };
 
   const handleParticipateClick = (e) => {
+    console.log("handleParticipateClick");
     e.stopPropagation();
     if (inFight === false) {
       const action = { type: "ADD_PARTICIPANT", value: item };
@@ -31,8 +32,8 @@ const Item = ({ item, dispatch, manageFavorites }) => {
 
   const handleFavoriteClick = (e) => {
     e.stopPropagation();
-    manageFavorites(item);
-    setFavorite(!favorite);
+    const action = { type: "TOGGLE_FAVORITE", value: item };
+    dispatch(action);
   };
 
   return (

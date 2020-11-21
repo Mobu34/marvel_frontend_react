@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Title from "../components/commun/Title";
 
 const Tournament = ({ teamA, teamB }) => {
+  console.log("team A =", teamA);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingFight, setIsLoadingFight] = useState(false);
   const [fightersA, setFightersA] = useState([]);
@@ -124,8 +125,8 @@ const Tournament = ({ teamA, teamB }) => {
 
 const mapStateToProps = (state) => {
   return {
-    teamA: state.teamA,
-    teamB: state.teamB,
+    teamA: state.fight.teamA,
+    teamB: state.fight.teamB,
   };
 };
 
