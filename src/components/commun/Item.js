@@ -2,11 +2,20 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-const Item = ({ item, dispatch }) => {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const Item = ({ item, dispatch, favorites }) => {
+  console.log(favorites);
   const history = useHistory();
 
   const [inFight, setInFight] = useState(false);
-  const [favorite, setFavorite] = useState(false);
+
+  item.isFavorite = false;
+  for (let i = 0; i < favorites.length; i++) {
+    if (favorites[i].id === item.id) {
+      item.isFavorite = true;
+    }
+  }
 
   const handleLinkClick = () => {
     if (item.name) {
@@ -32,6 +41,7 @@ const Item = ({ item, dispatch }) => {
 
   const handleFavoriteClick = (e) => {
     e.stopPropagation();
+    // item.isFavorite = item.isFavorite ? false : true;
     const action = { type: "TOGGLE_FAVORITE", value: item };
     dispatch(action);
   };
@@ -45,9 +55,16 @@ const Item = ({ item, dispatch }) => {
         ></div>
       )}
       <div
-        className={favorite ? "Item-favorite" : "Item-not-favorite"}
+        className={item.isFavorite ? "Item-favorite" : "Item-not-favorite"}
         onClick={handleFavoriteClick}
-      ></div>
+      >
+        <FontAwesomeIcon
+          icon={["fas", "star"]}
+          className={
+            item.isFavorite ? "Item-favorite-icon" : "Item-not-favorite-icon"
+          }
+        />
+      </div>
       <img
         src={item.thumbnail.path + "." + item.thumbnail.extension}
         alt={item.name || item.title}
@@ -66,4 +83,11 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapDispatchToProps)(Item);
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    favorites: state.favorites.favorites,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Item);

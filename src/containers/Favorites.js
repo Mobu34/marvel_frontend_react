@@ -15,11 +15,13 @@ const Favorites = ({ favorites }) => {
           ) : (
             <>
               <Title title="MY FAVS" />
-              <div className="Favorite-item-container">
-                <h2>MY COMICS</h2>
-                {favorites.map((favorite, index) => {
-                  return <Item key={index} item={favorite} />;
-                })}
+              <div className="Favorites-item-container">
+                <h2 className="Favorites-item-title">MY CHARACTERS</h2>
+                <div className="Favorites-item-subcontainer">
+                  {favorites.map((favorite, index) => {
+                    return <Item key={index} item={favorite} />;
+                  })}
+                </div>
               </div>
             </>
           )}
@@ -30,6 +32,7 @@ const Favorites = ({ favorites }) => {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     favorites: state.favorites.favorites,
   };
