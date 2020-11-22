@@ -24,10 +24,13 @@ const Characters = () => {
     const fetchData = async () => {
       console.log("fetcg");
       try {
-        const response = await axios.post("http://localhost:3001/characters", {
-          limit,
-          skip,
-        });
+        const response = await axios.post(
+          "https://marvel-backend-1.herokuapp.com/characters",
+          {
+            limit,
+            skip,
+          }
+        );
 
         if (response.data.code === 200) {
           setCharacters(response.data.data.results);

@@ -23,10 +23,13 @@ const Comics = () => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.post("http://localhost:3001/comics", {
-          limit,
-          skip,
-        });
+        const response = await axios.post(
+          "https://marvel-backend-1.herokuapp.com/comics",
+          {
+            limit,
+            skip,
+          }
+        );
 
         console.log(response.data);
         if (response.data.code === 200) {
