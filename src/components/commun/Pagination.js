@@ -1,25 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Pagination = ({ pages, to, setIsLoading }) => {
-  // const {p} = useParams()
+const Pagination = ({ pages, to, setIsLoading, p }) => {
+  const [pageColor, setPageColor] = useState(false);
+
+  const splittedPage = p.split("_");
+  const page = Number(splittedPage[1]);
+
   return (
     <div className="Pagination">
-      <span>{"<"}</span>
-      {pages.map((page) => {
-        // if (page > )
+      <Link
+        to={page === 1 ? `${to}${page}` : `${to}${page - 1}`}
+        className="link"
+      >
+        {"<"}
+      </Link>
+      {pages.map((item) => {
         return (
           <Link
-            key={page}
-            to={`${to}${page}`}
-            className="Pagination-link link"
+            key={item}
+            to={`${to}${item}`}
+            className={
+              pageColor ? "Pagination-link-active link" : "Pagination-link link"
+            }
             onClick={() => setIsLoading(true)}
           >
-            {page}
+            {item}
           </Link>
         );
       })}
-      <span>{">"}</span>
+      <Link
+        to={
+          page === pages[pages.length - 1] ? `${to}${page}` : `${to}${page + 1}`
+        }
+        className="link"
+      >
+        {">"}
+      </Link>
     </div>
   );
 };

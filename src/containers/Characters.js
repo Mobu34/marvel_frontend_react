@@ -31,7 +31,7 @@ const Characters = () => {
         if (response.data.code === 200) {
           setCharacters(response.data.data.results);
 
-          paginationFunc(response.data.data.total, setPages);
+          paginationFunc(response.data.data.total, setPages, p, skip);
 
           console.log(response.data.code);
           setIsLoading(false);
@@ -58,6 +58,7 @@ const Characters = () => {
                 pages={pages}
                 to="/characters/page_"
                 setIsLoading={setIsLoading}
+                p={p}
               />
             </>
           )}
