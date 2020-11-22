@@ -15,8 +15,6 @@ const Item = ({
 }) => {
   const history = useHistory();
 
-  console.log(fighter1);
-
   item.isFavorite = false;
   for (let i = 0; i < favoriteCharacters.length; i++) {
     if (favoriteCharacters[i].id === item.id) {

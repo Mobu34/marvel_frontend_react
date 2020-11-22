@@ -6,6 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
+import Home from "./containers/Home";
 import Characters from "./containers/Characters";
 import Comics from "./containers/Comics";
 import Favorites from "./containers/Favorites";
@@ -44,6 +45,9 @@ const App = () => {
           </Route>
           <Route path="/comic/:id">
             <Comic />
+          </Route>
+          <Route path="/">
+            <Home />
           </Route>
           <Route path="*">
             <Redirect to="/characters/page_1" />

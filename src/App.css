@@ -4,7 +4,7 @@
 /* GLOBAL */
 body {
   font-family: "Roboto", sans-serif;
-  background: url("./assets/images/marvel_bgc.jpg") fixed center;
+  background: url("./assets/images/marvel-dessin.jpg") fixed center;
 }
 .wrapper {
   width: 1300px;
@@ -20,15 +20,46 @@ body {
 
 /* COMMUN */
 .Title {
-  font-size: 40px;
-  padding: 40px;
+  font-size: 35px;
+  margin: 40px;
+  margin-top: 450px;
+  padding: 5px;
   font-weight: 800;
-  color: #f11d22;
+  color: #fff;
+  background-color: #530401;
+}
+
+/* Home */
+.Home {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  background: url("./assets/images/iron.jpg") fixed center no-repeat #fff;
+  display: flex;
+  align-items: center;
+}
+.Home-link-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Home-enter {
+  position: absolute;
+  color: #000;
+  font-size: 15px;
+}
+.Home-enter-btn {
+  margin-left: 100px;
+  padding: 2px;
+  font-size: 30px;
 }
 
 /* Header */
 .Header {
-  height: 70px;
+  height: 50px;
   background-color: rgba(0, 0, 0, 0.95);
 }
 .Header-wrapper {
@@ -39,12 +70,18 @@ body {
   height: 100%;
 }
 .Header-logo {
-  width: 100px;
+  margin-top: 50px;
+  width: 700px;
 }
 .Header-nav-link {
   margin: 0 15px;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
+  padding: 0 2px;
+}
+.Header-nav-link:hover {
+  background-color: #fff;
+  color: #000;
 }
 .Header-readytofight-container {
   position: relative;
@@ -68,7 +105,7 @@ body {
   align-items: center;
 }
 .Header-tournamentrules-btn {
-  background-color: #f11d22;
+  background-color: #530401;
   border: none;
   height: 35px;
   width: 100px;
@@ -76,6 +113,11 @@ body {
   font-size: 12px;
   font-weight: 600;
   border-radius: 20px;
+  cursor: pointer;
+}
+.Header-tournamentrules-btn:hover {
+  background-color: #fff;
+  color: #530401;
 }
 .Header-tournamentrules-container-hidden {
   display: none;
@@ -86,7 +128,7 @@ body {
   top: 100px;
   width: 400px;
   border-radius: 100px;
-  border: solid 5px #f11d22;
+  border: solid 5px #530401;
   background-color: rgba(0, 0, 0);
   z-index: 1;
   color: #fff;
@@ -94,8 +136,8 @@ body {
   text-align: center;
 }
 .Header-input-container {
-  background-color: #f11d22;
-  width: 70%;
+  background-color: #530401;
+  width: 700px;
   margin: auto;
   height: 60px;
   display: flex;
@@ -104,9 +146,9 @@ body {
   border-radius: 0 0 60px 60px;
 }
 .Header-input {
-  width: 70%;
+  width: 50%;
   height: 30px;
-  background-color: #b20d0d;
+  background-color: #fff;
   border: none;
   border-radius: 5px;
   padding: 10px;
@@ -115,7 +157,7 @@ body {
 
 /* Characters */
 .Characters {
-  margin-top: 60px;
+  margin-top: 450px;
 }
 .Characters-wrapper {
   display: flex;
@@ -125,7 +167,7 @@ body {
 
 /* Comics */
 .Comics {
-  margin-top: 60px;
+  margin-top: 450px;
 }
 .Comics-wrapper {
   display: flex;
@@ -135,12 +177,15 @@ body {
 
 /* Favorites */
 .Favorites {
-  margin-top: 60px;
+  margin-top: 450px;
 }
 .Favorites-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.Favorites-wrapper > div:first-child {
+  margin-bottom: 50px;
 }
 .Favorites-item-container {
   background-color: rgba(0, 0, 0, 0.7);
@@ -164,9 +209,6 @@ body {
 }
 
 /* Tournament */
-.Tournament {
-  margin-top: 60px;
-}
 .Tournament-wrapper {
   display: flex;
   flex-direction: column;
@@ -221,12 +263,12 @@ body {
 
 /* Character */
 .Character {
-  margin-top: 60px;
+  margin-top: 450px;
 }
 
 /* Comic */
 .Comic {
-  margin-top: 60px;
+  margin-top: 450px;
 }
 
 /* ItemList */
@@ -247,6 +289,12 @@ body {
   margin: 15px;
   height: 350px;
   position: relative;
+  cursor: pointer;
+}
+.Item:hover {
+  width: 300px;
+  margin: 5px;
+  height: 400px;
 }
 .Item-not-participate {
   position: absolute;
@@ -274,9 +322,6 @@ body {
   align-items: center;
   cursor: pointer;
 }
-.Item-participate-icon {
-  /* color: green; */
-}
 .Item-not-favorite {
   position: absolute;
   width: 30px;
@@ -297,7 +342,7 @@ body {
   border-radius: 50%;
   top: 20px;
   right: 20px;
-  background-color: rgb(223, 152, 71);
+  background-color: #530401;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -305,9 +350,10 @@ body {
 }
 .Item-favorite-icon {
   font-size: 20px;
+  color: #fff;
 }
 .Item-image {
-  width: 250px;
+  width: 100%;
   height: 300px;
   object-fit: cover;
 }

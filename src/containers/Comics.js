@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
 
-import Title from "../components/commun/Title";
+// import Title from "../components/commun/Title";
 import ItemList from "../components/commun/ItemList";
 import Pagination from "../components/commun/Pagination";
 
@@ -55,7 +55,7 @@ const Comics = () => {
             <Loader type="Puff" color="#f11d22" style={{ marginTop: 50 }} />
           ) : (
             <>
-              <Title title="DISCOVER OUR COMICS" />
+              {/* <Title title="DISCOVER OUR COMICS" /> */}
               <ItemList data={comics} />
               <Pagination
                 pages={pages}

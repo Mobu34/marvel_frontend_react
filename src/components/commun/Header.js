@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import marvelLogo from "../../assets/images/marvel-logo.png";
-
 const Header = ({ fighter1, fighter2 }) => {
   const [isRulesDisplayed, setIsRulesDisplayed] = useState(false);
 
@@ -19,11 +17,6 @@ const Header = ({ fighter1, fighter2 }) => {
     <>
       <header className="Header">
         <div className="Header-wrapper">
-          <img
-            src={marvelLogo}
-            alt="Logo Marvel Comics"
-            className="Header-logo"
-          />
           <div className="Header-nav-container">
             <Link to="/characters/page_1" className="Header-nav-link link">
               CHARACTERS
@@ -38,6 +31,7 @@ const Header = ({ fighter1, fighter2 }) => {
               FIGHT
             </Link>
           </div>
+
           <div className="Header-readytofight-container">
             {areReadyToFight()}
             <button
@@ -47,6 +41,20 @@ const Header = ({ fighter1, fighter2 }) => {
               FIGHTING RULES
             </button>
           </div>
+        </div>
+        <div
+          style={{
+            // backgroundColor: "yellow",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            // src={marvelLogo}
+            src="https://media.giphy.com/media/NUsKoYiGm1RPHl1eWM/giphy.gif"
+            alt="Logo Marvel Comics"
+            className="Header-logo"
+          />
         </div>
         <div className="Header-input-container">
           <input

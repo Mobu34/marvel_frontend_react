@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
 
-import Title from "../components/commun/Title";
+// import Title from "../components/commun/Title";
 import ItemList from "../components/commun/ItemList";
 import Pagination from "../components/commun/Pagination";
 
@@ -50,13 +50,14 @@ const Characters = () => {
 
   return (
     <main className="Characters">
+      {/* <span className="Marvel">MARVEL</span> */}
       <div className="wrapper">
         <div className="Characters-wrapper">
           {isLoading ? (
             <Loader type="Puff" color="#f11d22" style={{ marginTop: 50 }} />
           ) : (
             <>
-              <Title title="DISCOVER OUR CHARACTERS" />
+              {/* <Title title="DISCOVER OUR CHARACTERS" /> */}
               <ItemList data={characters} />
               <Pagination
                 pages={pages}
