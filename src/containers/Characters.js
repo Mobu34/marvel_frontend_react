@@ -18,7 +18,7 @@ const Characters = () => {
 
   useEffect(() => {
     const limit = 100;
-    const skip = (pageClickFunc(p) - 1) * 100;
+    const skip = (pageClickFunc(p) - 1) * 100 || 0;
 
     const fetchData = async () => {
       console.log("fetcg");
