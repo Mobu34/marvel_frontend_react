@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
 import Title from "../components/commun/Title";
 import ItemList from "../components/commun/ItemList";
@@ -31,7 +32,7 @@ const Comics = () => {
         if (response.data.code === 200) {
           setComics(response.data.data.results);
 
-          paginationFunc(response.data.data.total, setPages);
+          paginationFunc(response.data.data.total, setPages, p, skip);
 
           setIsLoading(false);
         }
@@ -48,7 +49,7 @@ const Comics = () => {
       <div className="wrapper">
         <div className="Comics-wrapper">
           {isLoading ? (
-            "Chargement en cours"
+            <Loader type="Puff" color="#f11d22" style={{ marginTop: 50 }} />
           ) : (
             <>
               <Title title="DISCOVER OUR COMICS" />
@@ -57,6 +58,7 @@ const Comics = () => {
                 pages={pages}
                 to="/comics/page_"
                 setIsLoading={setIsLoading}
+                p={p}
               />
             </>
           )}

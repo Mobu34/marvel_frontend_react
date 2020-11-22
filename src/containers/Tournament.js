@@ -56,7 +56,7 @@ const Tournament = ({ fighter1, fighter2, dispatch }) => {
           {isLoading ? (
             "Chargement en cours"
           ) : !fightersA.thumbnail || !fightersB.thumbnail ? (
-            <Title title="Please select 2 fighters to start the fight" />
+            <Title title="Please select 2 characters to start the fight" />
           ) : (
             <>
               <Title title="LET'S FIGHT" />

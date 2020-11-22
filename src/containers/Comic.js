@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Loader from "react-loader-spinner";
 
 import ItemDetails from "../components/commun/ItemDetails";
 
@@ -35,7 +36,7 @@ const Comic = () => {
       <div className="wrapper">
         <div className="Comic-wrapper">
           {isLoading ? (
-            "Chargement en cours..."
+            <Loader type="Puff" color="#f11d22" style={{ marginTop: 50 }} />
           ) : (
             <ItemDetails item={comic[0]} />
           )}

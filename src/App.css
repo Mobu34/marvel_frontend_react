@@ -59,7 +59,8 @@ body {
   position: absolute;
   color: #fff;
   right: 100px;
-  width: 500px;
+  width: max-content;
+  margin-right: 10px;
   font-size: 14px;
   height: 100%;
   display: flex;
@@ -258,6 +259,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .Item-participate {
   position: absolute;
@@ -270,6 +272,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .Item-participate-icon {
   /* color: green; */
@@ -285,6 +288,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .Item-favorite {
   position: absolute;
@@ -297,6 +301,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .Item-favorite-icon {
   font-size: 20px;

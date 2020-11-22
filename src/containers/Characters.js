@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
 import Title from "../components/commun/Title";
 import ItemList from "../components/commun/ItemList";
@@ -49,7 +50,7 @@ const Characters = () => {
       <div className="wrapper">
         <div className="Characters-wrapper">
           {isLoading ? (
-            "Chargement en cours"
+            <Loader type="Puff" color="#f11d22" style={{ marginTop: 50 }} />
           ) : (
             <>
               <Title title="DISCOVER OUR CHARACTERS" />

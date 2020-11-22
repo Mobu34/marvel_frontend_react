@@ -38,7 +38,6 @@ const Header = ({ fighter1, fighter2 }) => {
               FIGHT
             </Link>
           </div>
-          {/* <span style={{ color: "#fff" }}>READY TO FIGHT</span> */}
           <div className="Header-readytofight-container">
             {areReadyToFight()}
             <button
@@ -68,7 +67,7 @@ const Header = ({ fighter1, fighter2 }) => {
           <p>
             Vous pouvez déclencher un combat entre les personnages de l'univers
             Marvel, il vous suffit de sélectionner 2 personnages et de vous
-            rendre dans l'onglet TOURNAMENT.
+            rendre dans l'onglet FIGHT.
             <br />
             ENJOY ! :)
           </p>
