@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import marvelLogo from "/Users/Lucas/LeReacteur/React/Marvel/marvel_frontend_react/src/assets/images/marvel-logo.png";
+import marvelLogo from "../../assets/images/marvel-logo.png";
 
 const Header = ({ fighter1, fighter2 }) => {
   const [isRulesDisplayed, setIsRulesDisplayed] = useState(false);
